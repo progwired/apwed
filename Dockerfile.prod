@@ -1,0 +1,22 @@
+FROM node:20.11.1
+
+WORKDIR /app
+
+COPY package*.json .
+
+COPY . .
+
+RUN npm install
+
+RUN npm run build
+
+ENV PORT=4000
+
+EXPOSE 4000
+
+CMD [ "npm", "run", "start" ]
+
+# docker build -f Dockerfile.prod -t apwed_prod_img:0.01 .
+# docker images
+# docker run --name apwed_prod_container -d -p 4000:4000 apwed_prod_img:0.01
+# docker ps

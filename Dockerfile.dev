@@ -1,0 +1,18 @@
+FROM node:20.11.1
+
+WORKDIR /app
+
+COPY package*.json .
+
+COPY . .
+
+RUN npm install
+
+EXPOSE 3000
+
+CMD [ "npm", "run", "dev" ]
+
+# docker build -f Dockerfile.dev -t apwed_dev_img:0.01 .
+# docker images
+# docker run --name apwed_dev_container -d -p 3000:3000 apwed_dev_img:0.01
+# docker ps
